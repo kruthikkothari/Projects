@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: myprojects
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: myprojects
+
+  template:
+    metadata:
+      labels:
+        app: myprojects
+
+    spec:
+      containers:
+        - name: myprojects
+          image: gostlock/myprojects:latest
+          ports:
+            - containerPort: 8080
