@@ -15,16 +15,24 @@ pipeline {
         }
 
         stage('Build') {
-            steps {
-                bat 'mvn clean package -DskipTests'
-            }
-        }
+    tools {
+        maven 'Maven'
+    }
+
+    steps {
+        bat 'mvn clean package -DskipTests'
+    }
+}
 
         stage('Test') {
-            steps {
-                bat 'mvn test'
-            }
-        }
+    tools {
+        maven 'Maven'
+    }
+
+    steps {
+        bat 'mvn test'
+    }
+}
 
         stage('Docker Build') {
             steps {
